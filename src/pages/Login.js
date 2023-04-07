@@ -12,7 +12,7 @@ const Login = () => {
 	const [user] = useAuthState(auth);
 
 	if(user) {
-		return <Navigate to='/'/>;
+		return <Navigate to='/admin'/>;
 	} 
 
 	// Sign in with google
