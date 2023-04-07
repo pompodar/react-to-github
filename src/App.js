@@ -1,8 +1,8 @@
 import React from 'react';
 import {auth} from './firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
-import Login from './login';
-import Mainpage from './main';
+import Login from './pages/login';
+import Mainpage from './pages/main';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
