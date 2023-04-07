@@ -5,8 +5,13 @@ import {Navigate} from 'react-router-dom';
 import Counter from "../features/counter/Counter";
 import Address from "../features/address/Address";
 
-const Mainpage = () => {
+const Admin = () => {
+
 	const [user] = useAuthState(auth);
+
+	if(!user) {
+		return <Navigate to='/login'/>;
+	} 
 
 	// Signout function
 	const logout = () => {
@@ -15,10 +20,20 @@ const Mainpage = () => {
 	
 	return (
 		<div>
-			<Counter />
-			<Address />
+			Welcome
+			 
+			{
+				user.email
+			}
+
+            <Counter />
+            <Address />
+			<button style={{"marginLeft" : "20px"}}
+			onClick={logout}>
+				Logout
+			</button>
 		</div>
 	);
 }
 
-export default Mainpage;
+export default Admin;
