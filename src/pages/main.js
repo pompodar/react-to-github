@@ -1,7 +1,15 @@
 import React from 'react';
-import {auth} from './firebase';
+import {auth} from '../firebase';
+import {useAuthState} from 'react-firebase-hooks/auth';
+import {Navigate} from 'react-router-dom';
 
 const Mainpage = () => {
+
+	const [user] = useAuthState(auth);
+
+	if(!user) {
+		return <Navigate to='/login'/>;
+	} 
 
 	// Signout function
 	const logout = () => {
@@ -13,7 +21,7 @@ const Mainpage = () => {
 			Welcome
 			 
 			{
-				auth.currentUser.email
+				user.email
 			}
 			<button style={{"marginLeft" : "20px"}}
 			onClick={logout}>
