@@ -7,13 +7,10 @@ import { Route, Routes } from 'react-router-dom';
 
 function App() {
 	const [user] = useAuthState(auth);
-// return (
-// 	user ? <Mainpage/> : <Login/>
-// );
-return <Routes>
-	<Route path="/" element={<Mainpage />}/>
-	<Route path="/login" element={<Login/>}/>
-</Routes>
+	return <Routes>
+		<Route path="/" element={<Mainpage />}/>
+		<Route path="/login" element={<Login/>}/>
+	</Routes>
 }
 
 export default App;
