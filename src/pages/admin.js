@@ -26,12 +26,13 @@ const Admin = () => {
 				user.email
 			}
 
-            <Counter />
-            <Address />
-			<button style={{"marginLeft" : "20px"}}
+            <button style={{"marginLeft" : "20px"}}
 			onClick={logout}>
 				Logout
 			</button>
+
+            <Counter />
+            <Address />
 		</div>
 	);
 }
