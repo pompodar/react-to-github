@@ -1,9 +1,10 @@
 import { useSelector, useDispatch } from "react-redux";
+import {database} from '../../firebase';
 import {
     reset,
-    incrementByAmount
+    incrementByAmount,
 } from './addressSlice';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 
 const Address = () => {
@@ -13,7 +14,21 @@ const Address = () => {
 
     const [incrementAmount, setIncrementAmount] = useState(addr);
 
-    const addValue = incrementAmount || "";
+    useEffect(() => {
+        const starCountRef = database.ref('resume/');
+        
+        starCountRef.once('value').then((snapshot) => {
+            snapshot.forEach(childSnapshot => {
+            const data = childSnapshot.val();
+            const key = childSnapshot.key;
+            if(key == "address") {
+                dispatch(incrementByAmount(data))
+            }
+            });
+        });
+      }, []);
+
+    const addValue = incrementAmount || "";    
 
     const resetAll = () => {
         setIncrementAmount("");
@@ -31,7 +46,7 @@ const Address = () => {
                         value={incrementAmount}
                         onChange={(e) => setIncrementAmount(e.target.value)}
                         />
-                        <div>
+                        <div>                            
                             <button onClick={() => dispatch(incrementByAmount(addValue))}>Add Amount</button>
                             <button onClick={resetAll}>Reset</button>
                         </div>
