@@ -3,16 +3,16 @@ import {database} from '../../firebase';
 import {
     reset,
     incrementByAmount,
-} from './addressSlice';
+} from './work1Slice';
 import { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 
-const Address = () => {
-    const addr = useSelector((state) => state.address.addr);
+const Work1 = () => {
+    const working1 = useSelector((state) => state.work1.working1);
     const dispatch = useDispatch();
     const location = useLocation();
 
-    const [incrementAmount, setIncrementAmount] = useState(addr);
+    const [incrementAmount, setIncrementAmount] = useState(working1);
 
     useEffect(() => {
         const starCountRef = database.ref('resume/');
@@ -21,7 +21,7 @@ const Address = () => {
             snapshot.forEach(childSnapshot => {
             const data = childSnapshot.val();
             const key = childSnapshot.key;
-            if(key == "address") {
+            if(key == "work1") {
                 dispatch(incrementByAmount(data))
             }
             });
@@ -37,7 +37,8 @@ const Address = () => {
 
     return (
         <section>
-            <p>{addr}</p>
+            <p className="work1">Work 1</p>
+            <p>{working1}</p>
             {
 				location.pathname == '/admin' && (
 					<>
@@ -56,4 +57,4 @@ const Address = () => {
         </section>
     )
 }
-export default Address
+export default Work1

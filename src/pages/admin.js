@@ -3,7 +3,8 @@ import {auth} from '../firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {Navigate} from 'react-router-dom';
 import Counter from "../features/counter/Counter";
-import Address from "../features/address/Address";
+import Work1 from "../features/work1/Work1";
+import Work2 from "../features/work2/Work2";
 import {Link } from 'react-router-dom';
 
 const Admin = () => {
@@ -34,7 +35,8 @@ const Admin = () => {
                 </ul>
 			</nav>			 
             <Counter />
-            <Address />
+            <Work1 />
+            <Work2 />
 		</div>
 	);
 }

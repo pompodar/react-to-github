@@ -3,7 +3,8 @@ import {auth} from '../firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {Navigate} from 'react-router-dom';
 import Counter from "../features/counter/Counter";
-import Address from "../features/address/Address";
+import Work1 from "../features/work1/Work1";
+import Work2 from "../features/work2/Work2";
 
 const Mainpage = () => {
 	const [user] = useAuthState(auth);
@@ -16,7 +17,12 @@ const Mainpage = () => {
 	return (
 		<div>
 			<Counter />
-			<Address />
+			<div className="work1">
+			    <Work1 />
+			</div>
+			<div className="work2">
+			    <Work2 />
+			</div>
 		</div>
 	);
 }

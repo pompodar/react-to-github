@@ -2,23 +2,22 @@ import { createSlice } from "@reduxjs/toolkit";
 import {database} from '../../firebase';
 
 const initialState = {
-    count: ""
+    working: ""
 }
 
-export const counterSlice = createSlice({
-    name: 'counter',
+export const work2Slice = createSlice({
+    name: 'work2',
     initialState,
     reducers: {
         reset: (state) => {
-            state.count = "";
+            state.working = "";
         },
         incrementByAmount: (state, action) => {
-            state.count = action.payload;
-
+            state.working = action.payload;
             const starCountRef = database.ref('resume/');
 
             starCountRef.update({
-                counter: action.payload,
+                work2: action.payload,
             })
             .then(() => {
             console.log('Data written successfully!');
@@ -30,6 +29,6 @@ export const counterSlice = createSlice({
     }
 });
 
-export const { reset, incrementByAmount } = counterSlice.actions;
+export const {reset, incrementByAmount} = work2Slice.actions;
 
-export default counterSlice.reducer;
+export default work2Slice.reducer;

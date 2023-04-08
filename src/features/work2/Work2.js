@@ -1,18 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
+import {database} from '../../firebase';
 import {
     reset,
-    incrementByAmount
-} from './counterSlice';
+    incrementByAmount,
+} from './work2Slice';
 import { useState, useEffect } from "react";
-import {database} from '../../firebase';
 import { useLocation } from 'react-router-dom';
 
-const Counter = () => {
-    const count = useSelector((state) => state.counter.count);
+const Work2 = () => {
+    const working = useSelector((state) => state.work2.working);
     const dispatch = useDispatch();
     const location = useLocation();
 
-    const [incrementAmount, setIncrementAmount] = useState(count);
+    const [incrementAmount, setIncrementAmount] = useState(working);
 
     useEffect(() => {
         const starCountRef = database.ref('resume/');
@@ -21,14 +21,14 @@ const Counter = () => {
             snapshot.forEach(childSnapshot => {
             const data = childSnapshot.val();
             const key = childSnapshot.key;
-            if(key == "counter") {
+            if(key == "work2") {
                 dispatch(incrementByAmount(data))
             }
             });
         });
       }, []);
 
-    const addValue = incrementAmount || "";
+    const addValue = incrementAmount || "";    
 
     const resetAll = () => {
         setIncrementAmount("");
@@ -37,7 +37,8 @@ const Counter = () => {
 
     return (
         <section>
-            <p>{count}</p>
+            <p className="work2">Work 2</p>
+            <p>{working}</p>
             {
 				location.pathname == '/admin' && (
 					<>
@@ -46,7 +47,7 @@ const Counter = () => {
                         value={incrementAmount}
                         onChange={(e) => setIncrementAmount(e.target.value)}
                         />
-                        <div>
+                        <div>                            
                             <button onClick={() => dispatch(incrementByAmount(addValue))}>Add Amount</button>
                             <button onClick={resetAll}>Reset</button>
                         </div>
@@ -56,4 +57,4 @@ const Counter = () => {
         </section>
     )
 }
-export default Counter
+export default Work2
