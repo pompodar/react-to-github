@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {database} from '../../firebase';
 
 const initialState = {
-    working1: ""
+    working: ""
 }
 
 export const work1Slice = createSlice({
@@ -10,10 +10,10 @@ export const work1Slice = createSlice({
     initialState,
     reducers: {
         reset: (state) => {
-            state.working1 = "";
+            state.working = "";
         },
         incrementByAmount: (state, action) => {
-            state.working1 = action.payload;
+            state.working = action.payload;
             const starCountRef = database.ref('resume/');
 
             starCountRef.update({

@@ -8,11 +8,11 @@ import { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 
 const Work1 = () => {
-    const working1 = useSelector((state) => state.work1.working1);
+    const working = useSelector((state) => state.work1.working);
     const dispatch = useDispatch();
     const location = useLocation();
 
-    const [incrementAmount, setIncrementAmount] = useState(working1);
+    const [incrementAmount, setIncrementAmount] = useState(working);
 
     useEffect(() => {
         const starCountRef = database.ref('resume/');
@@ -38,7 +38,7 @@ const Work1 = () => {
     return (
         <section>
             <p className="work1">Work 1</p>
-            <p>{working1}</p>
+            <p>{working}</p>
             {
 				location.pathname == '/admin' && (
 					<>
