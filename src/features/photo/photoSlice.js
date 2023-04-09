@@ -2,23 +2,24 @@ import { createSlice } from "@reduxjs/toolkit";
 import {database} from '../../firebase';
 
 const initialState = {
-    count: ""
+    pic: ""
 }
 
-export const counterSlice = createSlice({
-    name: 'counter',
+export const photoSlice = createSlice({
+    name: 'photo',
     initialState,
     reducers: {
         reset: (state) => {
-            state.count = "";
+            state.pic = "";
         },
         incrementByAmount: (state, action) => {
-            state.count = action.payload;
+            state.pic = action.payload;
+            console.log(action.payload);
 
             const starCountRef = database.ref('resume/');
 
             starCountRef.update({
-                counter: action.payload,
+                photo: action.payload,
             })
             .then(() => {
             console.log('Data written successfully!');
@@ -30,6 +31,6 @@ export const counterSlice = createSlice({
     }
 });
 
-export const { reset, incrementByAmount } = counterSlice.actions;
+export const { reset, incrementByAmount } = photoSlice.actions;
 
-export default counterSlice.reducer;
+export default photoSlice.reducer;

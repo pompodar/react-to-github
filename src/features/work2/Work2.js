@@ -57,4 +57,5 @@ const Work2 = () => {
         </section>
     )
 }
+
 export default Work2

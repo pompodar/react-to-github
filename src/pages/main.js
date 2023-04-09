@@ -2,7 +2,8 @@ import React from 'react';
 import {auth} from '../firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {Navigate} from 'react-router-dom';
-import Counter from "../features/counter/Counter";
+import AboutMe from "../features/aboutMe/AboutMe";
+import Photo from "../features/photo/Photo";
 import Work1 from "../features/work1/Work1";
 import Work2 from "../features/work2/Work2";
 
@@ -16,7 +17,8 @@ const Mainpage = () => {
 	
 	return (
 		<div>
-			<Counter />
+			<AboutMe />
+			<Photo />
 			<div className="work1">
 			    <Work1 />
 			</div>
