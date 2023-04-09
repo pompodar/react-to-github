@@ -2,16 +2,31 @@ import { useSelector, useDispatch } from "react-redux";
 import {
     reset,
     incrementByAmount
-} from './counterSlice';
-import { useState } from "react";
+} from './aboutMeSlice';
+import { useState, useEffect } from "react";
+import {database} from '../../firebase';
 import { useLocation } from 'react-router-dom';
 
-const Counter = () => {
-    const count = useSelector((state) => state.counter.count);
+const AboutMe = () => {
+    const about = useSelector((state) => state.aboutMe.about);
     const dispatch = useDispatch();
     const location = useLocation();
 
-    const [incrementAmount, setIncrementAmount] = useState(count);
+    const [incrementAmount, setIncrementAmount] = useState(about);
+
+    useEffect(() => {
+        const starCountRef = database.ref('resume/');
+        
+        starCountRef.once('value').then((snapshot) => {
+            snapshot.forEach(childSnapshot => {
+            const data = childSnapshot.val();
+            const key = childSnapshot.key;
+            if(key == "aboutMe") {
+                dispatch(incrementByAmount(data))
+            }
+            });
+        });
+      }, []);
 
     const addValue = incrementAmount || "";
 
@@ -22,7 +37,9 @@ const Counter = () => {
 
     return (
         <section>
-            <p>{count}</p>
+            <p>About Me</p>
+            <p>{about}</p>
+
             {
 				location.pathname == '/admin' && (
 					<>
@@ -41,4 +58,4 @@ const Counter = () => {
         </section>
     )
 }
-export default Counter
+export default AboutMe
