@@ -16,14 +16,20 @@ const Mainpage = () => {
 	}
 	
 	return (
-		<div>
-			<AboutMe />
-			<Photo />
-			<div className="work1">
-			    <Work1 />
+		<div className='homePage'>
+			<div className='homePage-left'>
+				<div className="work1">
+					<Work1 />
+				</div>
+				<div className="work2">
+					<Work2 />
+				</div>
 			</div>
-			<div className="work2">
-			    <Work2 />
+			<div className='homePage-right'>
+				<div className='photo'>
+					<Photo />
+				</div>
+				<AboutMe />
 			</div>
 		</div>
 	);
