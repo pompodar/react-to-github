@@ -23,7 +23,7 @@ const Admin = () => {
 		<div>
             <nav>
 				<ul>
-					<li><Link to="/">Home</Link></li>
+					<li className='home-Link'><Link to="/">Home</Link></li>
 				    <li>{ user.email }</li>
                     <li>
                         <button style={{"marginLeft" : "20px"}}
