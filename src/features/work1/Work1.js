@@ -48,7 +48,7 @@ const Work1 = () => {
                         onChange={(e) => setIncrementAmount(e.target.value)}
                         />
                         <div>                            
-                            <button onClick={() => dispatch(incrementByAmount(addValue))}>Add Amount</button>
+                            <button onClick={() => dispatch(incrementByAmount(addValue))}>Edit</button>
                             <button onClick={resetAll}>Reset</button>
                         </div>
                     </>

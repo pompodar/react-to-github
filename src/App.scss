@@ -1,4 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
 #root {
+    .adminPage {
+        padding: 20px;
+
+        .menu-items {
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none 
+        }      
+        
+        img {
+            display: block;
+        }
+
+        input[type=file] {
+            display: inline;
+            width: 180px;
+        }
+
+        .reset-photo {
+            display: inline;
+        }
+    }
 
     .homePage {
         display: flex;
