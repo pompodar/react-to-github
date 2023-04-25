@@ -22,9 +22,9 @@ const Admin = () => {
 	}
 	
 	return (
-		<div>
+		<div className='adminPage'>
             <nav>
-				<ul>
+				<ul className='menu-items'>
 					<li><Link to="/">Home</Link></li>
 				    <li>{ user.email }</li>
                     <li>

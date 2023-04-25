@@ -65,7 +65,7 @@ const Photo = () => {
                         }
                         }
                         />
-                        <div>
+                        <div className="reset-photo">
                             <button onClick={resetAll}>Reset</button>
                         </div>
                     </>
