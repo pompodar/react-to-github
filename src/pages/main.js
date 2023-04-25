@@ -8,25 +8,31 @@ import Work1 from "../features/work1/Work1";
 import Work2 from "../features/work2/Work2";
 
 const Mainpage = () => {
-	const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
-	// Signout function
-	const logout = () => {
-		auth.signOut();
-	}
-	
-	return (
-		<div>
-			<AboutMe />
-			<Photo />
-			<div className="work1">
-			    <Work1 />
-			</div>
-			<div className="work2">
-			    <Work2 />
-			</div>
-		</div>
-	);
+  // Signout function
+  const logout = () => {
+    auth.signOut();
+  }
+  
+  return (
+    <div className='homePage'>
+      <div className='homePage-left'>
+        <div className="work1">
+          <Work1 />
+        </div>
+        <div className="work2">
+          <Work2 />
+        </div>
+      </div>
+      <div className='homePage-right'>
+        <div className='photo'>
+          <Photo />
+        </div>
+        <AboutMe />
+      </div>
+    </div>
+  );
 }
 
 export default Mainpage;

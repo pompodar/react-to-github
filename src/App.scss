@@ -1,3 +1,45 @@
 #root {
-    background: yellowgreen;
+
+    .homePage {
+        display: flex;
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 50px 70px;
+        gap: 60px;
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column-reverse;
+        }
+
+        .homePage-left {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @media screen and (max-width: 768px) {
+                width: 100%;
+            }
+        }
+        
+        .homePage-right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @media screen and (max-width: 768px) {
+                width: 100%;
+            }
+
+            .photo {
+                width: 200px;
+
+                img {
+                    width: 100%;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
 }
